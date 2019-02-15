@@ -1,0 +1,57 @@
+
+此项目为开发框架项目，网站可以在此基础上直接开发。
+    后端技术: spring boot 2.1.2
+             spring-boot-starter-web (spring mvc)
+             mybatis-spring-boot-starter 2.0.0 (mybatis)
+             mysql
+    前端技术：layui
+说明：
+    后端使用 rest 直接发布。
+    前端使用layui框架的框架。
+
+目录说明：
+    java:
+        api: 所有后端逻辑代码，对应到url的api目录下面的所有功能。
+            controller: controller类的存放位置，
+                        规则：每个模块一个controller类，有一个模块目录；每个方法对应一个功能和一个功能目录。
+                             访问到的url就是:   api/模块/功能
+            service：存放业务逻辑。
+                        规则：每个模块一个目录，
+                             有一个接口文件对外报漏功能
+                             impl：接口的实现类和其他需要的辅助类等。
+        conf:配置类，一般不需要修改
+             AOPConfig类：定义切面
+             ApiUrlConfig类：定义api路径和controller的对应关系。
+        mybatis：生成工具生成的dao和entity，不能手工修改
+        mybatisEx:当系统生成的mybatis不够用的时候，可以把自己手工写的mybatis功能放入此文件夹。
+        Application：应用启动类。内部包含mybatis的dao扫描设置，一般无需改动。
+
+    resources:
+        mybatis:
+            mapper: 存放生成工具生成的mybatis mapper 的xml文件,不能手工修改。
+        mybatisEx:
+            mapper: 存放mybatis生成的功能不能满足要求，手工写的mapper xml文件。
+        static：
+            前端代码。主要存放layui框架开发的前端页面。
+        application.properties: 项目配置文件。网站端口号，数据库连接参数，mybatis参数等。
+
+开发说明：
+    此框架是开箱即用，只需要通过少数设置和步骤进可以进入开发阶段，具体步骤如下：
+    1。设置数据库连接。
+    2。设置数据库结构。
+    3。利用工具生成mybatis的dao entity mapper.xml
+    4。进入开发：
+        后台：主要在， java.app.api 目录下进行
+        前台：主要在， resources.static 目录下进行
+    5。其中2、3、4步骤可以重复交替进行。
+
+
+部署：
+1.打包生成jar文件。
+2.解压jar文件到app目录
+3.在app同目录下执行命令可启动程序：
+java -classpath app/BOOT-INF/classes  -Djava.ext.dirs=app/BOOT-INF/lib  app.Application
+4.app/BOOT-INF/classes/static目录中的静态文件可以直接修改，不需要重新启动应用。
+5.动态增加和修改类必须要重新启动程序才可以。
+
+
