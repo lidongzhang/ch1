@@ -1,7 +1,6 @@
 package app.home.controller;
 
 import org.springframework.core.env.Environment;
-import org.springframework.stereotype.Component;
 
 import java.util.Date;
 

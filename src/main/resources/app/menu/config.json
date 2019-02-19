@@ -1,0 +1,49 @@
+[
+  {
+    "title": "系统演示",
+    "icon": "layui-icon-app",
+    "href": "home/index2.html",
+    "spread": true,
+    "right": "r1",
+    "children": [
+      {
+        "title": "演示界面1",
+        "href": "demo/demo1.html",
+        "right": "sr2"
+      },
+      {
+        "title": "演示界面2",
+        "href": "demo/demo2.html",
+        "right": "sr2"
+      },
+      {
+        "title": "演示界面3",
+        "href": "demo/demo3.html",
+        "right": "sr2"
+      }
+    ]
+  },
+  {
+    "title": "系统管理",
+    "icon": "layui-icon-app",
+    "spread": true,
+    "right": "r2",
+    "children": [
+      {
+        "title": "人员管理",
+        "href": "home/index.html",
+        "right": "sr2"
+      },
+      {
+        "title": "角色管理",
+        "href": "home/index.html",
+        "right": "sr2"
+      },
+      {
+        "title": "其他管理",
+        "href": "home/index.html",
+        "right": "sr2"
+      }
+    ]
+  }
+]

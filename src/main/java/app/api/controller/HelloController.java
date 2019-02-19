@@ -1,16 +1,18 @@
 package app.api.controller;
 
+import app.conf.ApiResponse.Response;
+import app.conf.ApiResponse.ResponseData;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/hello")
+@RequestMapping(value = "/api/hello")
 @ResponseBody
-public class helloController {
+public class HelloController {
 
     @RequestMapping("/sayHello")
-    public String sayHello(){
-        return "api hello";
+    public Response sayHello(){
+        return ResponseData.success("api hello");
     }
 }
