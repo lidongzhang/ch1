@@ -2,17 +2,11 @@ package app.conf.ApiResponse;
 
 public class ApiResponse extends Response {
 
-    public static final String CODE_SUCCESS = "success";
-
-    public static final String CODE_FAIL = "fail";
-
     private String code;
     private ResponseData result;
     private String msg;
 
-    public ApiResponse(){
-
-    }
+    public ApiResponse(){}
 
     public ApiResponse(String code){
         this.code = code;
@@ -38,10 +32,6 @@ public class ApiResponse extends Response {
 
     public static ApiResponse fail(String msg){
         return new ApiResponse(CODE_FAIL, msg);
-    }
-
-    public static ApiResponse widthCode(String errorCode) {
-        return new ApiResponse(errorCode);
     }
 
     public String getMsg() {

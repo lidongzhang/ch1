@@ -3,6 +3,7 @@ package app.api.service.menu.impl;
 import app.api.service.menu.MenuInterface;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
@@ -12,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.List;
 
+@Slf4j
 @Service
 public class MenuImpl implements MenuInterface {
 
@@ -30,9 +32,11 @@ public class MenuImpl implements MenuInterface {
             ObjectMapper objectMapper = new ObjectMapper();
             return objectMapper.readValue(str, new TypeReference<List<MenuEntity>>(){});
         }catch (FileNotFoundException e){
-            System.out.println(e.toString());
+            e.printStackTrace();
+            log.error(e.toString());
         }catch (Exception e){
-            System.out.println(e.toString());
+            e.printStackTrace();
+            log.error(e.toString());
         }
         return  null;
     }

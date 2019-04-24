@@ -87,14 +87,16 @@
 
 <#macro jsLayout>
     <script>
-        app.use(['form', 'upload'], function () {
+        app.use(['form', 'upload', 'ajax'], function () {
            var form = layui.form;
            var upload = layui.upload;
+           var ajax = layui.ajax;
 
            upload.render({
                 elem: '#test1' //绑定元素
                 ,url: '/upload/file' //上传接口
                 ,accept: 'file'
+                ,data:{user_token: '123456'}
                 ,done: function(res){
                     //上传完毕回调
                    console.log(res);
@@ -104,6 +106,8 @@
                    layer.msg('上传失败');
                 }
             });
+
+
 
 
         });

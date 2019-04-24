@@ -4,22 +4,22 @@
     "icon": "layui-icon-app",
     "href": "home/index2.html",
     "spread": true,
-    "right": "r1",
     "children": [
       {
         "title": "演示界面1",
-        "href": "demo/demo1.html",
-        "right": "sr2"
+        "href": "demo/demo1.html"
       },
       {
         "title": "演示界面2",
-        "href": "demo/demo2.html",
-        "right": "sr2"
+        "href": "demo/demo2.html"
       },
       {
         "title": "演示界面3",
-        "href": "demo/demo3.html",
-        "right": "sr2"
+        "href": "demo/demo3.html"
+      },
+      {
+        "title": "演示界面4",
+        "href": "demo/demo4.html"
       }
     ]
   },
@@ -27,22 +27,29 @@
     "title": "系统管理",
     "icon": "layui-icon-app",
     "spread": true,
-    "right": "r2",
     "children": [
       {
         "title": "人员管理",
-        "href": "home/index.html",
-        "right": "sr2"
+        "href": "users/index.html"
+      }
+    ]
+  },
+  {
+    "title": "权限管理",
+    "icon": "layui-icon-app",
+    "spread": true,
+    "children": [
+      {
+        "title": "基础权限",
+        "href": "sysRight/index.html"
       },
       {
         "title": "角色管理",
-        "href": "home/index.html",
-        "right": "sr2"
+        "href": "home/index.html"
       },
       {
-        "title": "其他管理",
-        "href": "home/index.html",
-        "right": "sr2"
+        "title": "权限组",
+        "href": "sys_right_group/index.html"
       }
     ]
   }

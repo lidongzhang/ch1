@@ -16,7 +16,7 @@ layui.define(['jquery','layer', 'app_config', 'table', 'app_util'], function(exp
             }
 
             var defaultOptions = {
-                height: 400,
+                height: 415,
                 pageSize: 20,
                 page: true,
                 contentType: 'application/json',
@@ -41,16 +41,19 @@ layui.define(['jquery','layer', 'app_config', 'table', 'app_util'], function(exp
                 contentType: 'application/json',
                 headers: {user_token: app.user_token},
                 parseData: function (res) {
-                    console.log(res);
-                    if(res.code !== 'success')
-                        return {code:100, msg:'数据获取失败!'};
-                    if(res.result.code !== 'success')
-                        return {code:100, msg:'数据获取失败!'};
-
+                    //console.log(res);
+                    if(res.code !== 'success' ) {
+                        layer.msg(res.msg);
+                        return {code: 100, msg: '数据获取失败!'};
+                    }
+                    if(res.result.code !== 'success'){
+                        layer.msg(res.result.msg);
+                        return {code: 100, msg: '数据获取失败!'};
+                    }
                     return {
                         code: 0,
-                        count: 200,
-                        data: res.result.data
+                        count: res.result.data.count,
+                        data: res.result.data.data
                     };
                 }
             });

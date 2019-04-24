@@ -153,7 +153,7 @@ layui.define(['element', 'common'], function (exports) {
                                         icon: icon,
                                         title: title
                                     }
-                                }
+                                };
                                 callback(data);
                             });
                         });

@@ -3,11 +3,49 @@
     后端技术: spring boot 2.1.2
              spring-boot-starter-web (spring mvc)
              mybatis-spring-boot-starter 2.0.0 (mybatis)
-             mysql
+             mysql/sqlserver
     前端技术：layui
 说明：
     后端使用 rest 直接发布。
+        支持功能：
+        1、身份验证
+            todo：说明
+        2、文件上传
+            todo:说明
+        3、文件下载
+            todo:说明
+        4、后台地址/api和前台地址/home配置 和路由。
+        5、/home 404 页面处理。
+        6、redis操作，及工具类。
+            不再使用session，直接使用redis存储数据，代替session
+        7、接收数据校验
+        todo:
+            说明
+        注意事项：
+        1、controller模块中所有的返回值都应该是ResponseData的实例。
+        2、controller直接调用的service的功能返回值也尽量用ResponseData，这样简化操作，不用二次转换。
     前端使用layui框架的框架。
+        支持功能
+        1、基本功能:
+            1、登录
+            2、表格
+                todo 表格行编辑
+            3、上传文件
+            4、下载文件
+            5、动态菜单
+            6、iframe布局构架
+                todo
+                    完善支持移动端
+                    404页面美化
+                    隐藏左侧菜单操作
+                    文字和行有些偏大
+            7、form提交
+            8、弹出子窗口，父子窗口数据交互。
+            9、表单提交数据校验
+            todo
+                图表
+                文本编辑器
+
 
 目录说明：
     java:
@@ -47,6 +85,20 @@
 
 
 部署：
+0.配置文件设置：application.properties
+  版本号，防止浏览器缓存
+      #每次发布时，增加此版本号
+      app.version=0.01
+      #升级layui的时候更新此版本号，防止浏览器缓存
+      app.layui-version=2.4.5
+      #发布的时候修改mode为release,防止每次执行的后生成新的随机号。
+      app.mode=debug
+  数据库配置:
+      spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+      spring.datasource.url = jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8
+      spring.datasource.username = root
+      spring.datasource.password = root,123
+
 1.打包生成jar文件。
 2.解压jar文件到app目录
 3.在app同目录下执行命令可启动程序：

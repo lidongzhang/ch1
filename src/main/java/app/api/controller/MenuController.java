@@ -1,16 +1,17 @@
 package app.api.controller;
 
+import app.api.helper.session.SessionUtil;
 import app.api.service.menu.MenuInterface;
 import app.conf.ApiResponse.Response;
 import app.conf.ApiResponse.ResponseData;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
+@Scope("prototype")
 @RequestMapping("api/menu")
-@ResponseBody
 public class MenuController {
 
     @Autowired
@@ -18,7 +19,6 @@ public class MenuController {
 
     @RequestMapping("/getMenu")
     public Response getMenu(){
-
         return ResponseData.success(menuInterface.getMenus(""));
     }
 

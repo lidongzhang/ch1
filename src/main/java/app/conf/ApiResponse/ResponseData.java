@@ -30,13 +30,12 @@ public class ResponseData  extends Response {
         this.msg = msg;
     }
 
-
     public ResponseData() {}
     public ResponseData(String code, String msg, Object data){
         this.code = code;
         this.msg = msg;
         this.data = data;
-    }
+}
     public ResponseData(String code, String msg){
         this.code = code;
         this.msg = msg;
@@ -47,19 +46,21 @@ public class ResponseData  extends Response {
     }
 
     public ResponseData(Object data){
-        this.code = ApiResponse.CODE_SUCCESS;
+        this.code = CODE_SUCCESS;
         this.data = data;
     }
 
     public static ResponseData success(Object data){
-        return new ResponseData(ApiResponse.CODE_SUCCESS, data);
+
+        return new ResponseData(CODE_SUCCESS, data);
     }
 
     public static ResponseData fail(String msg){
-        return new ResponseData(ApiResponse.CODE_FAIL, msg);
+
+        return new ResponseData(CODE_FAIL, msg);
     }
 
-    public static ResponseData fail_data(String msg, Object data){
-        return new ResponseData(ApiResponse.CODE_FAIL, msg, data);
+    public static ResponseData failWidthData(String msg, Object data){
+        return new ResponseData(CODE_FAIL, msg, data);
     }
 }

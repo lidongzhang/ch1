@@ -1,12 +1,7 @@
 package app.api.lnterceptor;
 
-
-import app.api.service.user.UserInterface;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.env.Environment;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
+import app.api.service.sysUser.SysUserInterface;
+import app.home.controller.AppProperties;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,24 +12,24 @@ import javax.servlet.http.HttpServletResponse;
 
 public class ApiInterceptor implements HandlerInterceptor {
 
-    private Environment env;
-    private UserInterface userInterface;
+    private SysUserInterface sysUserInterface;
 
-    public ApiInterceptor(Environment env, UserInterface userInterface){
-        this.env = env;
-        this.userInterface = userInterface;
+    private AppProperties appProperties;
+
+    public ApiInterceptor(AppProperties appProperties, SysUserInterface sysUserInterface){
+        this.appProperties = appProperties;
+        this.sysUserInterface = sysUserInterface;
     }
 
     @Override
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response, Object arg2)
             throws Exception {
-        String api_login_url = env.getProperty("app.api-login-url");
-        String api_error_url = env.getProperty("app.api-error-url");
-        String error_url = env.getProperty("app.error-url");
-        System.out.println("this is preHandle :");
-        System.out.println(request.getRequestURI());
-        System.out.println("compare login:" + request.getRequestURI().compareTo("/api/user/login"));
+        String api_login_url = appProperties.getApi_login_url();
+        String api_error_url = appProperties.getApi_error_url();
+        String error_url = appProperties.getError_url();
+        String api_download_url = appProperties.getApi_download_url();
+        String api_upload_url = appProperties.getApi_upload_url();
 
         //登陆和错误也不检查身份
         if (request.getRequestURI().compareTo(api_login_url) == 0 ||
@@ -43,19 +38,33 @@ public class ApiInterceptor implements HandlerInterceptor {
             return true;
         }
 
+        //download 不能设置header只能用post提交的参数
+        if(request.getRequestURI().compareTo(api_download_url) == 0 ||
+           request.getRequestURI().contains(api_download_url) ||
+           request.getRequestURI().compareTo(api_upload_url) == 0 ||
+           request.getRequestURI().contains(api_upload_url)
+            ) {
+            String user_token = request.getParameter("user_token");
+            if(sysUserInterface.getUserIdByUserToken(user_token) == null){
+                forward(request, response, api_error_url);
+                return false;
+            }else
+                return true;
+        }
 
-        String user_token = request.getHeader("user_token");
-        if (user_token == null ||
-            user_token.equals("") ||
-            userInterface.checkToken(user_token) == false) {
-
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher(api_error_url);
-            request.setAttribute("app-error-msg", "没有用户身份");
-            requestDispatcher.forward(request, response);
+        String userId = sysUserInterface.getUserId();
+        if(userId == null){
+            forward(request, response, api_error_url);
             return  false;
         }
 
         return true;
+    }
+
+    private  void forward(HttpServletRequest request, HttpServletResponse response, String url) throws Exception{
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(url);
+        request.setAttribute("app-error-msg", "没有用户身份");
+        requestDispatcher.forward(request, response);
     }
 
     @Override

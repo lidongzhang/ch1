@@ -15,7 +15,7 @@
 
 .admin-user-login{padding-top: 100px; width:200px; margin: 0 auto;}
 
-.layui-icon{margin-right: 5px; font-weight: bolder; color:yellow;}
+.admin-nav .layui-icon{margin-right: 5px; font-weight: bolder;}
 
 
 .admin-right-content{background-color: #f2f2f2; padding: 10px;}
@@ -23,5 +23,15 @@
 .admin-right {position:absolute; right: 10px;}
 .admin-text-right {text-align: right;}
 .admin-padding-right {padding-right: 20px;}
+
+.admin-form-label {float:right;}
+.admin-form-content {float:left;}
+
+.admin-color-green {color:#009688;}
+.admin-color-red {color:#FF5722;}
+.admin-color-yellow {color:#FFB800;}
+.admin-text-bold {font:bold;}
+
+.admin-hand {cursor: pointer;}
 
 

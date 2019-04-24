@@ -11,11 +11,10 @@
                     <i class="layui-icon layui-icon-add-1"></i>增加-1
                 </button>
             </sapn>
-            </sapn>
         </div>
         <div class="layui-card-body">
             <blockquote class="layui-elem-quote">
-                提示信息：abcd。
+                提示信息：如无提示信息可删除此部分内容。
             </blockquote>
 
             <fieldset class="layui-elem-field">
@@ -42,7 +41,8 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><div class="layui-form-item">
+                            <td>
+                                <div class="layui-form-item">
                                     <label class="layui-form-label">选择框</label>
                                     <div class="layui-input-block">
                                         <select name="city" lay-verify="required">
@@ -54,49 +54,51 @@
                                             <option value="4">杭州</option>
                                         </select>
                                     </div>
-                                </div></td>
-                            <td><div class="layui-form-item">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="layui-form-item">
                                     <label class="layui-form-label">复选框</label>
                                     <div class="layui-input-block">
                                         <input type="checkbox" name="like[write]" title="写作">
                                         <input type="checkbox" name="like[read]" title="阅读" checked>
                                         <input type="checkbox" name="like[dai]" title="发呆">
                                     </div>
-                                </div></td>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
-                            <td><div class="layui-form-item">
+                            <td>
+                                <div class="layui-form-item">
                                     <label class="layui-form-label">开关</label>
                                     <div class="layui-input-block">
                                         <input type="checkbox" name="switch" lay-skin="switch">
                                     </div>
-                                </div></td>
-                            <td><div class="layui-form-item">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="layui-form-item">
                                     <label class="layui-form-label">单选框</label>
                                     <div class="layui-input-block">
                                         <input type="radio" name="sex" value="男" title="男">
                                         <input type="radio" name="sex" value="女" title="女" checked>
                                     </div>
-                                </div></td>
+                                </div>
+                            </td>
                         </tr>
                     </table>
-                    </div>
-                    <div class="layui-form-item admin-text-right admin-padding-right" >
-                        <div class="layui-input-block" >
-                            <button class="layui-btn layui-btn-radius layui-btn-normal layui-btn-xs " lay-submit  lay-filter="formDemo">
-                                <i class="layui-icon layui-icon-search"></i>查询
-                            </button>
-                         </div>
-                    </div>
+                    <div class="layui-input-block admin-text-right admin-padding-right" >
+                        <button class="layui-btn layui-btn-radius layui-btn-normal layui-btn-xs " lay-submit  lay-filter="formDemo">
+                            <i class="layui-icon layui-icon-search"></i>查询
+                        </button>
+                     </div>
                 </form>
             </fieldset>
-
 
         <fieldset class="layui-elem-field">
             <legend>查询结果</legend>
             <table id="tabl_ser" lay-filter="test"></table>
         </fieldset>
-        </div>
     </div>
 </#macro>
 
